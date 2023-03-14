@@ -79,6 +79,11 @@
 #define configMESSAGE_BUFFER_LENGTH_TYPE         size_t
 /* USER CODE END MESSAGE_BUFFER_LENGTH_TYPE */
 
+/* FreeRTOS PLUS CLI */
+#define configINCLUDE_TRACE_RELATED_CLI_COMMANDS 0
+#define configINCLUDE_QUERY_HEAP_COMMAND         1
+#define configCOMMAND_INT_MAX_OUTPUT_SIZE        512
+
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES                    0
 #define configMAX_CO_ROUTINE_PRIORITIES          ( 2 )

@@ -48,6 +48,12 @@
 
 /* USER CODE BEGIN PV */
 
+#define CLI_STACK_SIZE (1024)
+#define CLI_TASK_PRIORITY (tskIDLE_PRIORITY + 2)
+static StaticTask_t cliTaskBuffer;
+static StackType_t cliTaskStack[CLI_STACK_SIZE];
+extern void vUARTCommandConsoleStart(uint16_t usStackSize, UBaseType_t uxPriority, StaticTask_t *taskBuf, StackType_t *taskStack);
+extern void vRegisterSampleCLICommands(void);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -102,6 +108,8 @@ int main(void)
   MX_UART8_Init();
   /* USER CODE BEGIN 2 */
 
+	vUARTCommandConsoleStart(CLI_STACK_SIZE, CLI_TASK_PRIORITY, &cliTaskBuffer, cliTaskStack);
+	vRegisterSampleCLICommands();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
