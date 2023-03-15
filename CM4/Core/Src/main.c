@@ -20,6 +20,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "fdcan.h"
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -54,6 +55,7 @@ static StaticTask_t cliTaskBuffer;
 static StackType_t cliTaskStack[CLI_STACK_SIZE];
 extern void vUARTCommandConsoleStart(uint16_t usStackSize, UBaseType_t uxPriority, StaticTask_t *taskBuf, StackType_t *taskStack);
 extern void vRegisterSampleCLICommands(void);
+extern void vRegisterCanCLICommands(void);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -106,10 +108,12 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM5_Init();
   MX_UART8_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
 	vUARTCommandConsoleStart(CLI_STACK_SIZE, CLI_TASK_PRIORITY, &cliTaskBuffer, cliTaskStack);
 	vRegisterSampleCLICommands();
+  vRegisterCanCLICommands();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
