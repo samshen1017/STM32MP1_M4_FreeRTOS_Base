@@ -56,6 +56,8 @@ static StackType_t cliTaskStack[CLI_STACK_SIZE];
 extern void vUARTCommandConsoleStart(uint16_t usStackSize, UBaseType_t uxPriority, StaticTask_t *taskBuf, StackType_t *taskStack);
 extern void vRegisterSampleCLICommands(void);
 extern void vRegisterCanCLICommands(void);
+extern void vRegisterAD74412CLICommands(void);
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -114,6 +116,7 @@ int main(void)
 	vUARTCommandConsoleStart(CLI_STACK_SIZE, CLI_TASK_PRIORITY, &cliTaskBuffer, cliTaskStack);
 	vRegisterSampleCLICommands();
   vRegisterCanCLICommands();
+  vRegisterAD74412CLICommands();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -180,7 +183,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL4.PLLSource = RCC_PLL4SOURCE_HSE;
   RCC_OscInitStruct.PLL4.PLLM = 3;
   RCC_OscInitStruct.PLL4.PLLN = 50;
-  RCC_OscInitStruct.PLL4.PLLP = 2;
+  RCC_OscInitStruct.PLL4.PLLP = 25;
   RCC_OscInitStruct.PLL4.PLLQ = 20;
   RCC_OscInitStruct.PLL4.PLLR = 8;
   RCC_OscInitStruct.PLL4.PLLRGE = RCC_PLL4IFRANGE_1;
