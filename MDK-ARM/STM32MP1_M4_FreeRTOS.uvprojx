@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>CORE_CM4,USE_HAL_DRIVER,STM32MP157Cxx</Define>
               <Undefine></Undefine>
-              <IncludePath>../CM4/Core/Inc;../Drivers/STM32MP1xx_HAL_Driver/Inc;../Drivers/STM32MP1xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32MP1xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/FreeRTOS-Plus-CLI;../usr/SCore;../usr/SCore/common</IncludePath>
+              <IncludePath>../CM4/Core/Inc;../Drivers/STM32MP1xx_HAL_Driver/Inc;../Drivers/STM32MP1xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32MP1xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/FreeRTOS-Plus-CLI;../usr/SCore;../usr/SCore/common;../usr/ad74412r</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -797,9 +797,14 @@
           <GroupName>usr/Test</GroupName>
           <Files>
             <File>
-              <FileName>Can-CLI-commnad.c</FileName>
+              <FileName>Can-CLI-command.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\usr\Test\Can-CLI-commnad.c</FilePath>
+              <FilePath>..\usr\Test\Can-CLI-command.c</FilePath>
+            </File>
+            <File>
+              <FileName>AD74412-CLI-command.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\usr\Test\AD74412-CLI-command.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -830,6 +835,46 @@
               <FileName>phex.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\usr\SCore\common\phex.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>usr/ad74412r</GroupName>
+          <Files>
+            <File>
+              <FileName>ad74413r.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\usr\ad74412r\ad74413r.c</FilePath>
+            </File>
+            <File>
+              <FileName>no_os_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\usr\ad74412r\no_os_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>no_os_alloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\usr\ad74412r\no_os_alloc.c</FilePath>
+            </File>
+            <File>
+              <FileName>no_os_crc8.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\usr\ad74412r\no_os_crc8.c</FilePath>
+            </File>
+            <File>
+              <FileName>no_os_util.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\usr\ad74412r\no_os_util.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\usr\ad74412r\stm32_delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\usr\ad74412r\spi_port.c</FilePath>
             </File>
           </Files>
         </Group>
