@@ -62,6 +62,7 @@ extern void vRegisterAD74412CLICommands(void);
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void PeriphCommonClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
@@ -97,6 +98,12 @@ int main(void)
     SystemClock_Config();
   }
 
+  if(IS_ENGINEERING_BOOT_MODE())
+  {
+    /* Configure the peripherals common clocks */
+    PeriphCommonClock_Config();
+  }
+
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -109,7 +116,6 @@ int main(void)
   MX_FDCAN2_Init();
   MX_TIM2_Init();
   MX_TIM5_Init();
-  MX_UART8_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
@@ -183,7 +189,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL4.PLLSource = RCC_PLL4SOURCE_HSE;
   RCC_OscInitStruct.PLL4.PLLM = 3;
   RCC_OscInitStruct.PLL4.PLLN = 50;
-  RCC_OscInitStruct.PLL4.PLLP = 25;
+  RCC_OscInitStruct.PLL4.PLLP = 4;
   RCC_OscInitStruct.PLL4.PLLQ = 20;
   RCC_OscInitStruct.PLL4.PLLR = 8;
   RCC_OscInitStruct.PLL4.PLLRGE = RCC_PLL4IFRANGE_1;
@@ -218,6 +224,24 @@ void SystemClock_Config(void)
   /** Set the HSE division factor for RTC clock
   */
   __HAL_RCC_RTC_HSEDIV(1);
+}
+
+/**
+  * @brief Peripherals Common Clock Configuration
+  * @retval None
+  */
+void PeriphCommonClock_Config(void)
+{
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+
+  /** Initializes the common periph clock
+  */
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_CKPER;
+  PeriphClkInit.CkperClockSelection = RCC_CKPERCLKSOURCE_HSE;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
 /* USER CODE BEGIN 4 */

@@ -259,10 +259,10 @@ static BaseType_t AD74412_read_cmd(char *pcWriteBuffer, size_t xWriteBufferLen, 
     if (ret)
         goto error;
 
-    pr_info("Channel A: %d.%02u mV (Voltage input)\r\n", (int32_t)result[0].integer, result[0].decimal);
-    pr_info("Channel B: %d.%02u mV (Voltage input)\r\n", (int32_t)result[1].integer, result[1].decimal);
-    pr_info("Channel C: %d.%02u mV (Voltage input)\r\n", (int32_t)result[2].integer, result[2].decimal);
-    pr_info("Channel D: %d.%02u mV (Voltage input)\r\n", (int32_t)result[3].integer, result[3].decimal);
+    pr_info("Channel A: %ld.%02lu mV (Voltage input)\r\n", (int32_t)result[0].integer, result[0].decimal);
+    pr_info("Channel B: %ld.%02lu mV (Voltage input)\r\n", (int32_t)result[1].integer, result[1].decimal);
+    pr_info("Channel C: %ld.%02lu mV (Voltage input)\r\n", (int32_t)result[2].integer, result[2].decimal);
+    pr_info("Channel D: %ld.%02lu mV (Voltage input)\r\n", (int32_t)result[3].integer, result[3].decimal);
 
     pr_info("\r\n================================================================================\r\n\r\n");
     pr_info("Channel A fault: %d\r\n", status.status_bits.VI_ERR_A);

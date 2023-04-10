@@ -336,7 +336,7 @@ static UBaseType_t uxParameterNumber = 0;
 		memset( pcWriteBuffer, 0x00, xWriteBufferLen );
 		sprintf( pcWriteBuffer, "%d: ", ( int ) uxParameterNumber );
 		strncat( pcWriteBuffer, pcParameter, ( size_t ) xParameterStringLength );
-		strncat( pcWriteBuffer, "\r\n", strlen( "\r\n" ) );
+		strncat( pcWriteBuffer, "\r\n", strlen( "\r\n" ) + 1 );
 
 		/* If this is the last of the three parameters then there are no more
 		strings to return after this one. */
@@ -402,7 +402,7 @@ static UBaseType_t uxParameterNumber = 0;
 			memset( pcWriteBuffer, 0x00, xWriteBufferLen );
 			sprintf( pcWriteBuffer, "%d: ", ( int ) uxParameterNumber );
 			strncat( pcWriteBuffer, ( char * ) pcParameter, ( size_t ) xParameterStringLength );
-			strncat( pcWriteBuffer, "\r\n", strlen( "\r\n" ) );
+			strncat( pcWriteBuffer, "\r\n", strlen( "\r\n" ) + 1 );
 
 			/* There might be more parameters to return after this one. */
 			xReturn = pdTRUE;
