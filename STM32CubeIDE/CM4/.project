@@ -87,6 +87,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Drivers/STM32MP1xx_HAL_Driver/Src/stm32mp1xx_hal_hsem.c</locationURI>
 		</link>
 		<link>
+			<name>Drivers/STM32MP1xx_HAL_Driver/stm32mp1xx_hal_ipcc.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Drivers/STM32MP1xx_HAL_Driver/Src/stm32mp1xx_hal_ipcc.c</locationURI>
+		</link>
+		<link>
 			<name>Drivers/STM32MP1xx_HAL_Driver/stm32mp1xx_hal_mdma.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Drivers/STM32MP1xx_HAL_Driver/Src/stm32mp1xx_hal_mdma.c</locationURI>
@@ -215,6 +220,11 @@
 			<name>Application/User/Core/gpio.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/CM4/Core/Src/gpio.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/Core/ipcc.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/CM4/Core/Src/ipcc.c</locationURI>
 		</link>
 		<link>
 			<name>Application/User/Core/main.c</name>

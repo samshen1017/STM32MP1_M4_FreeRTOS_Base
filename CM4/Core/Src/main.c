@@ -20,6 +20,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "fdcan.h"
+#include "ipcc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -103,6 +104,11 @@ int main(void)
     /* Configure the peripherals common clocks */
     PeriphCommonClock_Config();
   }
+  else
+  {
+    /* IPCC initialisation */
+    MX_IPCC_Init();
+  }
 
   /* USER CODE BEGIN SysInit */
 
@@ -117,6 +123,7 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM5_Init();
   MX_SPI1_Init();
+  MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
 
 	vUARTCommandConsoleStart(CLI_STACK_SIZE, CLI_TASK_PRIORITY, &cliTaskBuffer, cliTaskStack);
@@ -168,13 +175,13 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   RCC_OscInitStruct.PLL2.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL2.PLLSource = RCC_PLL12SOURCE_HSE;
-  RCC_OscInitStruct.PLL2.PLLM = 2;
-  RCC_OscInitStruct.PLL2.PLLN = 50;
-  RCC_OscInitStruct.PLL2.PLLP = 3;
+  RCC_OscInitStruct.PLL2.PLLM = 3;
+  RCC_OscInitStruct.PLL2.PLLN = 66;
+  RCC_OscInitStruct.PLL2.PLLP = 2;
   RCC_OscInitStruct.PLL2.PLLQ = 2;
-  RCC_OscInitStruct.PLL2.PLLR = 2;
-  RCC_OscInitStruct.PLL2.PLLFRACV = 0;
-  RCC_OscInitStruct.PLL2.PLLMODE = RCC_PLL_INTEGER;
+  RCC_OscInitStruct.PLL2.PLLR = 1;
+  RCC_OscInitStruct.PLL2.PLLFRACV = 5120;
+  RCC_OscInitStruct.PLL2.PLLMODE = RCC_PLL_FRACTIONAL;
   RCC_OscInitStruct.PLL3.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL3.PLLSource = RCC_PLL3SOURCE_HSE;
   RCC_OscInitStruct.PLL3.PLLM = 3;
@@ -188,10 +195,10 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL4.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL4.PLLSource = RCC_PLL4SOURCE_HSE;
   RCC_OscInitStruct.PLL4.PLLM = 3;
-  RCC_OscInitStruct.PLL4.PLLN = 50;
-  RCC_OscInitStruct.PLL4.PLLP = 4;
-  RCC_OscInitStruct.PLL4.PLLQ = 20;
-  RCC_OscInitStruct.PLL4.PLLR = 8;
+  RCC_OscInitStruct.PLL4.PLLN = 60;
+  RCC_OscInitStruct.PLL4.PLLP = 6;
+  RCC_OscInitStruct.PLL4.PLLQ = 24;
+  RCC_OscInitStruct.PLL4.PLLR = 16;
   RCC_OscInitStruct.PLL4.PLLRGE = RCC_PLL4IFRANGE_1;
   RCC_OscInitStruct.PLL4.PLLFRACV = 0;
   RCC_OscInitStruct.PLL4.PLLMODE = RCC_PLL_INTEGER;

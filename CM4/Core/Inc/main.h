@@ -65,12 +65,8 @@ void Error_Handler(void);
 #define CAN1_TX_GPIO_Port GPIOD
 #define ReliefValve_Pin GPIO_PIN_11
 #define ReliefValve_GPIO_Port GPIOH
-#define Console_Tx_Pin GPIO_PIN_1
-#define Console_Tx_GPIO_Port GPIOE
 #define RS232_Rx_Pin GPIO_PIN_6
 #define RS232_Rx_GPIO_Port GPIOD
-#define Console_Rx_Pin GPIO_PIN_0
-#define Console_Rx_GPIO_Port GPIOE
 #define RS485_Rx_Pin GPIO_PIN_9
 #define RS485_Rx_GPIO_Port GPIOD
 #define RS485_Tx_Pin GPIO_PIN_8
