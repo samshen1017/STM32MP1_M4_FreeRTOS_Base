@@ -58,12 +58,12 @@ extern void vUARTCommandConsoleStart(uint16_t usStackSize, UBaseType_t uxPriorit
 extern void vRegisterSampleCLICommands(void);
 extern void vRegisterCanCLICommands(void);
 extern void vRegisterAD74412CLICommands(void);
+extern void vRegisterPWMCLICommands(void);
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void PeriphCommonClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
@@ -98,12 +98,6 @@ int main(void)
     /* Configure the system clock */
     SystemClock_Config();
   }
-
-  if(IS_ENGINEERING_BOOT_MODE())
-  {
-    /* Configure the peripherals common clocks */
-    PeriphCommonClock_Config();
-  }
   else
   {
     /* IPCC initialisation */
@@ -124,12 +118,17 @@ int main(void)
   MX_TIM5_Init();
   MX_SPI1_Init();
   MX_USART6_UART_Init();
+  MX_TIM4_Init();
+  MX_TIM12_Init();
+  MX_TIM15_Init();
   /* USER CODE BEGIN 2 */
 
-	vUARTCommandConsoleStart(CLI_STACK_SIZE, CLI_TASK_PRIORITY, &cliTaskBuffer, cliTaskStack);
-	vRegisterSampleCLICommands();
+  vUARTCommandConsoleStart(CLI_STACK_SIZE, CLI_TASK_PRIORITY, &cliTaskBuffer, cliTaskStack);
+  vRegisterSampleCLICommands();
   vRegisterCanCLICommands();
   vRegisterAD74412CLICommands();
+  vRegisterPWMCLICommands();
+
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -187,7 +186,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL3.PLLM = 3;
   RCC_OscInitStruct.PLL3.PLLN = 50;
   RCC_OscInitStruct.PLL3.PLLP = 2;
-  RCC_OscInitStruct.PLL3.PLLQ = 2;
+  RCC_OscInitStruct.PLL3.PLLQ = 4;
   RCC_OscInitStruct.PLL3.PLLR = 2;
   RCC_OscInitStruct.PLL3.PLLRGE = RCC_PLL3IFRANGE_1;
   RCC_OscInitStruct.PLL3.PLLFRACV = 0;
@@ -231,24 +230,6 @@ void SystemClock_Config(void)
   /** Set the HSE division factor for RTC clock
   */
   __HAL_RCC_RTC_HSEDIV(1);
-}
-
-/**
-  * @brief Peripherals Common Clock Configuration
-  * @retval None
-  */
-void PeriphCommonClock_Config(void)
-{
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
-
-  /** Initializes the common periph clock
-  */
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_CKPER;
-  PeriphClkInit.CkperClockSelection = RCC_CKPERCLKSOURCE_HSE;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-  {
-    Error_Handler();
-  }
 }
 
 /* USER CODE BEGIN 4 */

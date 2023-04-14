@@ -193,18 +193,18 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     PD5     ------> USART2_TX
     PD6     ------> USART2_RX
     */
-    GPIO_InitStruct.Pin = RS232_Tx_Pin;
+    GPIO_InitStruct.Pin = RS232_TX_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
-    HAL_GPIO_Init(RS232_Tx_GPIO_Port, &GPIO_InitStruct);
+    HAL_GPIO_Init(RS232_TX_GPIO_Port, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = RS232_Rx_Pin;
+    GPIO_InitStruct.Pin = RS232_RX_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
-    HAL_GPIO_Init(RS232_Rx_GPIO_Port, &GPIO_InitStruct);
+    HAL_GPIO_Init(RS232_RX_GPIO_Port, &GPIO_InitStruct);
 
     /* USART2 interrupt Init */
     HAL_NVIC_SetPriority(USART2_IRQn, 5, 0);
@@ -242,13 +242,13 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     PD8     ------> USART3_TX
     PD12     ------> USART3_DE
     */
-    GPIO_InitStruct.Pin = RS485_Rx_Pin;
+    GPIO_InitStruct.Pin = RS485_RX_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
-    HAL_GPIO_Init(RS485_Rx_GPIO_Port, &GPIO_InitStruct);
+    HAL_GPIO_Init(RS485_RX_GPIO_Port, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = RS485_Tx_Pin|RS485_DE_Pin;
+    GPIO_InitStruct.Pin = RS485_TX_Pin|RS485_DE_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
@@ -327,7 +327,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
     PD5     ------> USART2_TX
     PD6     ------> USART2_RX
     */
-    HAL_GPIO_DeInit(GPIOD, RS232_Tx_Pin|RS232_Rx_Pin);
+    HAL_GPIO_DeInit(GPIOD, RS232_TX_Pin|RS232_RX_Pin);
 
     /* USART2 interrupt Deinit */
     HAL_NVIC_DisableIRQ(USART2_IRQn);
@@ -348,7 +348,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
     PD8     ------> USART3_TX
     PD12     ------> USART3_DE
     */
-    HAL_GPIO_DeInit(GPIOD, RS485_Rx_Pin|RS485_Tx_Pin|RS485_DE_Pin);
+    HAL_GPIO_DeInit(GPIOD, RS485_RX_Pin|RS485_TX_Pin|RS485_DE_Pin);
 
     /* USART3 interrupt Deinit */
     HAL_NVIC_DisableIRQ(USART3_IRQn);
