@@ -204,7 +204,7 @@
 	pll3:st,pll@2 {
 		compatible = "st,stm32mp1-pll";
 		reg = <2>;
-		cfg = < 2 49 1 3 1 PQR(1,1,0) >;
+		cfg = < 3 124 3 5 5 PQR(1,1,0) >;
 	};
 	pll4:st,pll@3 {
 		compatible = "st,stm32mp1-pll";
